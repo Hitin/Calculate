@@ -66,6 +66,17 @@ class CalcTest < TestCase
 		assert { @calc.state == 5 }
 	end
 
+	def test_not_recover
+		# Изменяем значение
+		result = @calc.del(4, 2)
+		assert { result == 2 }
+
+		# Восстанавливаем когда ни разу не изменяли
+		@calc.recover
+		# Состояние не меняется
+		assert { @calc.state == 2 }
+	end
+
 	def test_reset
 		result = @calc.sum(2,4)
 		assert { result == 6 }

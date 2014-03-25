@@ -1,43 +1,41 @@
 module Calc
   class Instance
 
+    attr_reader :state
+
     def initialize
       super
-      @sost = 0
+      @state = 0
     end
 
-    def sum(par1, par2 = @sost)
-      @sost = par1 + par2
+    def sum(par1, par2 = @state)
+      @state = par1 + par2
     end
 
-    def minus(par1 = @sost, par2)
-      @sost = par1 - par2
+    def minus(par1 = @state, par2)
+      @state = par1 - par2
     end
 
-    def mul(par1, par2 = @sost)
-      @sost = par1 * par2
+    def mul(par1, par2 = @state)
+      @state = par1 * par2
     end
 
-    def del(par1 = @sost, par2)
-      @sost = par1 / par2
+    def del(par1 = @state, par2)
+      @state = par1 / par2
     rescue ZeroDivisionError => e
       raise CalcZeroDivisionError
     end
 
-    def state
-      @sost
-    end
-
     def save
-      @save = @sost
+      @save = @state
     end
 
     def recover 
-      @sost = @save if @save  
+      @state = @save if @save
     end
     
     def reset
-      @sost = 0
+      @state = 0
     end
 
   end
