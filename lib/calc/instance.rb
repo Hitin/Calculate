@@ -38,5 +38,9 @@ module Calc
       @state = 0
     end
 
+    def inspect
+      @state
+    end
+
   end
 end
